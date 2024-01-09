@@ -1,6 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
+import { validationResult } from 'express-validator';
 import {registerValidation} from './validations/auth.js'
 
 mongoose.connect(
@@ -13,7 +14,14 @@ const app = express();
 app.use(express.json());
 
 app.post('/auth/register', registerValidation, (req, res) => {
-
+	const errors = validationResult(req);
+	if(!errors.isEmpty()) {
+		return res.status(400).json(errors.array());
+	}
+	
+	res.json({
+		succes: true,
+	})
 });
 
 app.listen(4444, err => {
