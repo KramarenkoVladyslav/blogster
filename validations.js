@@ -11,3 +11,12 @@ export const registerValidation = [
 	body('fullName', 'Fullname is requaired and must be a valid name').isLength({ min: 3 }),
 	body('avatarUrl', 'Incorrect avatar link').optional().isURL(),
 ];
+
+export const postCreateValidation = [
+	body('title', 'Enter the title of the article').isLength({ min: 3 }).isString(),
+	body('text', 'Enter the text of the article').isLength({ min: 10 }).isString(),
+	body('tags', 'Invalid tags format (specify array)').optional().isString(),
+	body('imageUrl', 'Incorrect image link').optional().isString(),
+];
+
+
