@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { registerValidation, loginValidation } from './validations.js';
 import checkAuth from './utils/checkAuth.js';
 
-import * as userController from './controllers/UserController.js';
+import * as UserController from './controllers/UserController.js';
 
 mongoose
 	.connect(
@@ -16,11 +16,11 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/auth/login', loginValidation, userController.login);
+app.post('/auth/login', loginValidation, UserController.login);
 
-app.get('/auth/me', checkAuth, userController.getMe);
+app.get('/auth/me', checkAuth, UserController.getMe);
 
-app.post('/auth/register', registerValidation, userController.register);
+app.post('/auth/register', registerValidation, UserController.register);
 
 app.listen(4444, err => {
 	if (err) {
