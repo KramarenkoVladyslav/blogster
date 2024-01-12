@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { registerValidation } from './validations/auth.js';
 import checkAuth from './utils/checkAuth.js';
 
-import * as userController from './controllers/userController.js';
+import * as userController from './controllers/UserController.js';
 
 mongoose
 	.connect(
